@@ -1,4 +1,4 @@
-import Chapter from "@/types/Chapter";
+import Chapter from "@/types/Chaper";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 

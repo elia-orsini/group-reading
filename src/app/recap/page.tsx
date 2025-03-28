@@ -41,7 +41,7 @@ export default async function RecapPage() {
           </div>
 
           {/* Table Rows */}
-          {readings.map((chapter) => (
+          {readings.map((chapter: any) => (
             <div
               key={chapter.chapterId.S}
               className="grid grid-cols-12 border-b border-gray-100 p-4 transition-colors hover:bg-gray-50"

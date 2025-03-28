@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import readingSchedule from "../scripts/output.json";
 import RecordButtons from "./RecordButtons";
-import Chapter from "@/types/Chapter";
+import Chapter from "@/types/Chaper";
 
 function BookText() {
   const [todayChapter, setTodayChapter] = useState<Chapter | null>(null);
@@ -13,7 +13,7 @@ function BookText() {
   useEffect(() => {
     try {
       const today = new Date().toISOString().split("T")[0];
-      const chapter = readingSchedule[today];
+      const chapter = (readingSchedule as any)[today];
 
       if (!chapter) {
         setError("No chapter scheduled for today");
