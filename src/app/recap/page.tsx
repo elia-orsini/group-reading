@@ -47,21 +47,21 @@ export default async function RecapPage() {
           </div>
 
           {/* Table Rows */}
-          {readings.map((chapter: any) => (
+          {Object.keys(readingMap).map((title: any) => (
             <div
-              key={chapter.chapterId.S}
+              key={title}
               className="grid grid-cols-12 border-b border-gray-100 p-4 transition-colors hover:bg-gray-50"
             >
               <div className="col-span-6 flex items-center pl-6 font-medium text-gray-800">
-                <span className="truncate capitalize">{chapter.chapterId.S}</span>
+                <span className="truncate capitalize">{title}</span>
               </div>
 
               <div className="col-span-3 flex justify-center">
-                <StatusBadge read={readingMap?.[chapter.chapterId.S]?.["yiyi"]} person="yiyi" />
+                <StatusBadge read={readingMap?.[title]?.["yiyi"]} person="yiyi" />
               </div>
 
               <div className="col-span-3 flex justify-center">
-                <StatusBadge read={readingMap?.[chapter.chapterId.S]?.["qinyu"]} person="qinyu" />
+                <StatusBadge read={readingMap?.[title]?.["qinyu"]} person="qinyu" />
               </div>
             </div>
           ))}

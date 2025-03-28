@@ -17,7 +17,7 @@ export async function POST(request) {
       Item: {
         chapterId: { S: chapterId },
         person: { S: person },
-        date: { S: new Date().toISOString() },
+        date: { S: new Date().toLocaleDateString("en-CA") },
       },
     });
 

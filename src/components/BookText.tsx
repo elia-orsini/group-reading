@@ -12,7 +12,7 @@ function BookText() {
 
   useEffect(() => {
     try {
-      const today = new Date().toISOString().split("T")[0];
+      const today = new Date().toLocaleDateString("en-CA").split("T")[0];
       const chapter = (readingSchedule as any)[today];
 
       if (!chapter) {
