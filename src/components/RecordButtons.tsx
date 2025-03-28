@@ -10,7 +10,14 @@ export default function RecordButtons({ chapter }: { chapter: Chapter }) {
   useEffect(() => {
     const fetchReadingStatus = async () => {
       try {
-        const response = await fetch(`/api/record-reading?chapterId=${chapter.id}`);
+        const baseUrl = process.env.VERCEL_URL
+          ? `https://${process.env.VERCEL_URL}`
+          : process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
+        const response = await fetch(`${baseUrl}/api/record-reading?chapterId=${chapter.id}`, {
+          next: { revalidate: 3600 },
+        });
+
         const data = await response.json();
 
         if (data.readings) {
