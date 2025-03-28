@@ -6,7 +6,7 @@ async function getChapterReadings() {
       ? `https://${process.env.VERCEL_URL}`
       : process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
-    const res = await fetch(`${baseUrl}/api/readings`, { next: { revalidate: 120 } });
+    const res = await fetch(`${baseUrl}/api/readings`, { next: { revalidate: 60 } });
 
     if (res.ok) return await res.json();
 
