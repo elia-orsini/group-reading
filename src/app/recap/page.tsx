@@ -11,7 +11,7 @@ async function getChapterReadings() {
     if (res.ok) return await res.json();
 
     throw new Error("Both relative and absolute URLs failed");
-  } catch (error) {
+  } catch {
     return { readings: [] };
   }
 }
