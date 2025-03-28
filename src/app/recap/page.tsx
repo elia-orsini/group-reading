@@ -31,10 +31,10 @@ export default async function RecapPage() {
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="mx-auto max-w-4xl">
         <div className="mb-8 flex items-center justify-between">
-          <h1 className="text-3xl font-bold text-gray-800">Reading History</h1>
+          <h1 className="text-lg sm:text-3xl font-bold text-gray-800">Reading History</h1>
           <Link
             href="/"
-            className="flex items-center gap-1 rounded-lg border border-gray-300 bg-white px-4 py-2 text-gray-700 transition-all hover:bg-gray-50 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300"
+            className="flex text-sm sm:text-base items-center gap-1 rounded-lg border border-gray-300 bg-white px-4 py-2 text-gray-700 transition-all hover:bg-gray-50 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300"
           >
             ← Back to Reading
           </Link>
@@ -76,7 +76,7 @@ export default async function RecapPage() {
 function StatusBadge({ read, person }: { read: boolean; person: string }) {
   return (
     <button
-      className={`relative min-w-[100px] rounded-lg border px-4 py-2 text-sm transition-all ${
+      className={`relative min-w-[60px] sm:min-w-[100px] rounded-lg border px-4 py-2 text-sm transition-all ${
         read
           ? "border-green-300 bg-green-100 text-green-800 shadow-inner"
           : "border-gray-300 bg-white text-gray-700 hover:bg-gray-50"

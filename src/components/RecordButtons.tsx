@@ -54,12 +54,12 @@ export default function RecordButtons({ chapter }: { chapter: Chapter }) {
   };
 
   return (
-    <div className="my-10 flex flex-col items-center justify-between gap-4 sm:flex-row">
+    <div className="my-10 flex flex-row items-center justify-between gap-4 text-sm sm:flex-row sm:text-base">
       <div className="flex gap-3">
         <button
           onClick={() => recordReading("yiyi")}
           disabled={loading || readStatus.yiyi}
-          className={`relative min-w-[100px] rounded-lg border px-4 py-2 transition-all ${
+          className={`relative min-w-[60px] rounded-lg border px-4 py-2 transition-all sm:min-w-[100px] ${
             readStatus.yiyi
               ? "border-green-300 bg-green-100 text-green-800 shadow-inner"
               : "border-gray-300 bg-white hover:border-gray-400 hover:bg-gray-50"
@@ -76,7 +76,7 @@ export default function RecordButtons({ chapter }: { chapter: Chapter }) {
         <button
           onClick={() => recordReading("qinyu")}
           disabled={loading || readStatus.qinyu}
-          className={`relative min-w-[100px] rounded-lg border px-4 py-2 transition-all ${
+          className={`relative min-w-[60px] rounded-lg border px-4 py-2 transition-all sm:min-w-[100px] ${
             readStatus.qinyu
               ? "border-green-300 bg-green-100 text-green-800 shadow-inner"
               : "border-gray-300 bg-white hover:border-gray-400 hover:bg-gray-50"
