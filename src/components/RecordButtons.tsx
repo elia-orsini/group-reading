@@ -15,7 +15,7 @@ export default function RecordButtons({ chapter }: { chapter: Chapter }) {
           : process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
         const response = await fetch(`${baseUrl}/api/record-reading?chapterId=${chapter.id}`, {
-          next: { revalidate: 3600 },
+          next: { revalidate: 120 },
         });
 
         const data = await response.json();
