@@ -2,11 +2,11 @@ import Link from "next/link";
 
 async function getChapterReadings() {
   try {
-    const baseUrl = process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+    // const baseUrl = process.env.VERCEL_URL
+    //   ? `https://${process.env.VERCEL_URL}`
+    //   : process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
-    const res = await fetch(`${baseUrl}/api/readings`, { next: { revalidate: 60 } });
+    const res = await fetch(`https://group-reading.vercel.app/api/readings`, { next: { revalidate: 60 } });
 
     if (res.ok) return await res.json();
 
