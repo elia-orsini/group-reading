@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "communism.read-with-elia.xyz",
+      "destination": "/communism"
+    }
+  ]
+}
