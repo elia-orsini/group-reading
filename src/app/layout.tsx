@@ -7,8 +7,18 @@ const unica77Bold = localFont({ src: "./unica77-Bold.woff2" });
 
 export const metadata: Metadata = {
   title: "Group Reading",
-  description: "Group Reading",
+  description: "Let's read together, friends",
   icons: { icon: "/vercel.svg" },
+  openGraph: {
+    images: [
+      {
+        url: "/read.jpg",
+        width: 736,
+        height: 736,
+        alt: "Group Reading",
+      },
+    ],
+  },
 };
 
 export const viewport: Viewport = { maximumScale: 1 };
