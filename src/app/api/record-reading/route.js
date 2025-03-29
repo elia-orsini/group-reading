@@ -1,4 +1,4 @@
-import { DynamoDBClient, PutItemCommand, QueryCommand } from "@aws-sdk/client-dynamodb";
+import { DynamoDBClient, PutItemCommand, QueryCommand, DeleteItemCommand } from "@aws-sdk/client-dynamodb";
 
 const dynamoDB = new DynamoDBClient({
   region: process.env.AWS_REGION,
@@ -54,10 +54,28 @@ export async function GET(request) {
   }
 }
 
-export async function PUT() {
-  return new Response(null, { status: 405 });
-}
+export async function DELETE(request) {
+  const { chapterId, person } = await request.json();
 
-export async function DELETE() {
-  return new Response(null, { status: 405 });
+  try {
+    const command = new DeleteItemCommand({
+      TableName: "group-reading",
+      Key: {
+        chapterId: { S: chapterId },
+        person: { S: person },
+      },
+    });
+
+    await dynamoDB.send(command);
+    return new Response(JSON.stringify({ success: true }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  } catch (error) {
+    console.error("DynamoDB error:", error);
+    return new Response(JSON.stringify({ error: "Failed to delete reading record" }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
 }
