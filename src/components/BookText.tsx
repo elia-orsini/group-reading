@@ -75,7 +75,7 @@ function BookText() {
               onClick={returnToToday}
               className="rounded-lg border border-blue-300 bg-blue-50 px-4 py-2 text-blue-700 transition-all hover:bg-blue-100"
             >
-              ← Today's Chapter
+              ← Today&apos;s Chapter
             </button>
           )}
         </div>
