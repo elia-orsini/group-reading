@@ -12,6 +12,7 @@
     "@aws-sdk/client-dynamodb": "^3.777.0",
     "@gsap/react": "^2.1.2",
     "gsap": "^3.12.7",
+    "html-entities": "^2.5.5",
     "jszip": "^3.10.1",
     "next": "15.1.7",
     "path": "^0.12.7",

@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const JSZip = require("jszip");
 const xml2js = require("xml2js");
+const { decode } = require("html-entities");
 const { parseString } = xml2js;
 
 const SKIP_INITIAL_CHAPTERS = 5;
@@ -63,8 +64,10 @@ async function processEPUB(epubPath, outputPath) {
 }
 
 function cleanHtml(html) {
+  const decodedHtml = decode(html);
+
   // First, replace paragraph tags with a special marker
-  let text = html
+  let text = decodedHtml
     .replace(/<p[^>]*>/gi, "\n") // Replace opening <p> tags with newline
     .replace(/<\/p>/gi, "\n") // Replace closing </p> tags with newline
     .replace(/<br[^>]*\/?>/gi, "\n") // Replace <br> tags with newline
