@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import readingSchedule from "../scripts/output.json";
 import RecordButtons from "./RecordButtons";
 import Chapter from "@/types/Chaper";
+import { estimateReadingTime } from "@/utils/estimateReadingTime";
 
 function BookText() {
   const [todayChapter, setTodayChapter] = useState<Chapter | null>(null);
@@ -97,12 +98,22 @@ function BookText() {
           </select>
         </div>
 
-        <RecordButtons chapter={currentChapter || todayChapter} />
+        <RecordButtons
+          chapter={currentChapter || todayChapter}
+          isTodayChapter={todayChapter === currentChapter}
+        />
 
         <div className="mt-8 space-y-6">
           <h2 className="border-b border-gray-100 pb-4 text-2xl font-bold capitalize text-gray-800">
             {currentChapter?.title || todayChapter.title}
           </h2>
+
+          {(currentChapter?.content || todayChapter.content) && (
+            <p className="prose prose-lg mt-4 text-gray-700 opacity-60">
+              <span>estimated reading time: </span>
+              <span>{estimateReadingTime(currentChapter?.content || todayChapter.content)}</span>
+            </p>
+          )}
 
           <div className="prose prose-lg max-w-none text-gray-700">
             {(currentChapter?.content || todayChapter.content).split("\n").map((para, i) => (

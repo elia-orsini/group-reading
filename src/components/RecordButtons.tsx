@@ -2,7 +2,13 @@ import Chapter from "@/types/Chaper";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
-export default function RecordButtons({ chapter }: { chapter: Chapter }) {
+export default function RecordButtons({
+  chapter,
+  isTodayChapter,
+}: {
+  chapter: Chapter;
+  isTodayChapter: boolean;
+}) {
   const [loading, setLoading] = useState(false);
   const [readStatus, setReadStatus] = useState({ yiyi: false, qinyu: false });
 
@@ -55,8 +61,8 @@ export default function RecordButtons({ chapter }: { chapter: Chapter }) {
       <div className="flex gap-3">
         <button
           onClick={() => toggleReading("yiyi")}
-          disabled={loading}
-          className={`relative min-w-[60px] rounded-lg border px-4 py-2 transition-all sm:min-w-[100px] ${
+          disabled={loading || !isTodayChapter}
+          className={`relative min-w-[60px] rounded-lg border px-4 py-2 transition-all disabled:opacity-50 sm:min-w-[100px] ${
             readStatus.yiyi
               ? "border-green-300 bg-green-100 text-green-800 shadow-inner"
               : "border-gray-300 bg-white hover:border-gray-400 hover:bg-gray-50"
@@ -72,8 +78,8 @@ export default function RecordButtons({ chapter }: { chapter: Chapter }) {
 
         <button
           onClick={() => toggleReading("qinyu")}
-          disabled={loading}
-          className={`relative min-w-[60px] rounded-lg border px-4 py-2 transition-all sm:min-w-[100px] ${
+          disabled={loading || !isTodayChapter}
+          className={`relative min-w-[60px] rounded-lg border px-4 py-2 transition-all disabled:opacity-50 sm:min-w-[100px] ${
             readStatus.qinyu
               ? "border-green-300 bg-green-100 text-green-800 shadow-inner"
               : "border-gray-300 bg-white hover:border-gray-400 hover:bg-gray-50"
