@@ -6,7 +6,7 @@ export function middleware(request: NextRequest) {
   const host = request.headers.get("host");
 
   if (host === "communism.read-with-elia.xyz") {
-    return NextResponse.redirect(new URL("/communism", request.url));
+    return NextResponse.rewrite(new URL("/communism", request.url));
   }
 
   return NextResponse.next();
