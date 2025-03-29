@@ -109,8 +109,8 @@ function BookText() {
           </h2>
 
           {(currentChapter?.content || todayChapter.content) && (
-            <p className="prose prose-lg mt-4 text-gray-700 opacity-60">
-              <span>estimated reading time: </span>
+            <p className="prose prose-lg mt-4 text-gray-700 opacity-80">
+              <span className="opacity-60">Estimated Reading Time: </span>
               <span>{estimateReadingTime(currentChapter?.content || todayChapter.content)}</span>
             </p>
           )}
