@@ -17,6 +17,13 @@ async function getChapterReadings() {
 export default async function RecapPage() {
   const { readings } = await getChapterReadings();
 
+  readings.sort((a: any, b: any) => {
+    const dateA: any = new Date(a.date.S);
+    const dateB: any = new Date(b.date.S);
+
+    return dateA - dateB;
+  });
+
   const readingMap = readings?.reduce((acc: any, reading: any) => {
     const chapterId = reading.chapterId.S;
     const person = reading.person.S;
