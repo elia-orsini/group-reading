@@ -69,7 +69,7 @@ function BookText() {
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:px-8">
-      <div className="rounded-xl bg-white p-6 shadow-sm sm:p-8">
+      <div className="rounded-xl bg-[var(--background)] p-6 shadow-sm sm:p-8">
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
           {currentChapter?.id !== todayChapter?.id && (
             <button

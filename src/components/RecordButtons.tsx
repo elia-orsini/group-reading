@@ -62,10 +62,10 @@ export default function RecordButtons({
         <button
           onClick={() => toggleReading("yiyi")}
           disabled={loading || !isTodayChapter}
-          className={`relative min-w-[60px] rounded-lg border px-4 py-2 transition-all disabled:opacity-50 sm:min-w-[100px] ${
+          className={`relative min-w-[60px] rounded-lg border px-4 py-2 opacity-80 transition-all hover:opacity-60 disabled:opacity-50 sm:min-w-[100px] ${
             readStatus.yiyi
               ? "border-green-300 bg-green-100 text-green-800 shadow-inner"
-              : "border-gray-300 bg-white hover:border-gray-400 hover:bg-gray-50"
+              : "border-gray-300 bg-[var(--background)]"
           } ${loading ? "opacity-70" : ""} focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-opacity-50`}
         >
           {readStatus.yiyi && (
@@ -79,10 +79,10 @@ export default function RecordButtons({
         <button
           onClick={() => toggleReading("qinyu")}
           disabled={loading || !isTodayChapter}
-          className={`relative min-w-[60px] rounded-lg border px-4 py-2 transition-all disabled:opacity-50 sm:min-w-[100px] ${
+          className={`relative min-w-[60px] rounded-lg border px-4 py-2 opacity-80 transition-all hover:opacity-60 disabled:opacity-50 sm:min-w-[100px] ${
             readStatus.qinyu
               ? "border-green-300 bg-green-100 text-green-800 shadow-inner"
-              : "border-gray-300 bg-white hover:border-gray-400 hover:bg-gray-50"
+              : "border-gray-300 bg-[var(--background)]"
           } ${loading ? "opacity-70" : ""} focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-opacity-50`}
         >
           {readStatus.qinyu && (
@@ -96,7 +96,7 @@ export default function RecordButtons({
 
       <Link
         href="/recap"
-        className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-gray-700 transition-colors hover:border-gray-400 hover:bg-gray-50 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
+        className="rounded-lg border border-gray-300 bg-[var(--background)] px-4 py-2 text-[var(--foreground)] opacity-80 transition-colors hover:opacity-60 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
       >
         Reading History →
       </Link>

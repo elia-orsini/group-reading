@@ -33,21 +33,23 @@ export default async function RecapPage() {
   }, {});
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-[var(--background)] p-6">
       <div className="mx-auto max-w-4xl">
         <div className="mb-8 flex items-center justify-between">
-          <h1 className="text-lg font-bold text-gray-800 sm:text-3xl">Reading History</h1>
+          <h1 className="text-lg font-bold text-[var(--foreground)] opacity-80 sm:text-3xl">
+            Reading History
+          </h1>
           <Link
             href="/"
-            className="flex items-center gap-1 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm text-gray-700 transition-all hover:bg-gray-50 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300 sm:text-base"
+            className="flex items-center opacity-80 gap-1 rounded-lg border border-[var(--foreground)] bg-[var(--background)] px-4 py-2 text-sm text-[var(--foreground)] transition-all hover:opacity-60 focus:outline-none focus:ring-2 focus:ring-gray-300 sm:text-base"
           >
             ← Back to Reading
           </Link>
         </div>
 
-        <div className="overflow-hidden rounded-xl bg-white shadow-sm">
+        <div className="border-[var(--foreground)]/40 overflow-hidden rounded-xl border bg-[var(--background)] shadow-sm">
           {/* Table Header */}
-          <div className="grid grid-cols-12 bg-gray-100 p-4 font-medium text-gray-700">
+          <div className="border-[var(--foreground)]/40 grid grid-cols-12 border-b bg-[var(--background)] p-4 font-medium text-[var(--foreground)]">
             <div className="col-span-6 pl-6">Chapter</div>
             <div className="col-span-3 text-center">依依</div>
             <div className="col-span-3 text-center">沁瑜</div>
@@ -57,9 +59,9 @@ export default async function RecapPage() {
           {Object.keys(readingMap).map((title: any) => (
             <div
               key={title}
-              className="grid grid-cols-12 border-b border-gray-100 p-4 transition-colors hover:bg-gray-50"
+              className="border-[var(--foreground)]/40 grid grid-cols-12 border-b p-4 transition-colors"
             >
-              <div className="col-span-6 flex items-center pl-6 font-medium text-gray-800">
+              <div className="col-span-6 flex items-center pl-6 font-medium text-[var(--foreground)]">
                 <span className="truncate capitalize">{title}</span>
               </div>
 
@@ -84,13 +86,17 @@ function StatusBadge({ read, person }: { read: boolean; person: string }) {
       className={`relative min-w-[60px] rounded-lg border px-4 py-2 text-sm transition-all sm:min-w-[100px] ${
         read
           ? "border-green-300 bg-green-100 text-green-800 shadow-inner"
-          : "border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
-      } focus:outline-none focus:ring-2 focus:ring-green-300`}
+          : "border-red-400 bg-red-300 text-gray-700 shadow-inner hover:bg-gray-50"
+      } focus:outline-none`}
       disabled={read}
     >
-      {read && (
-        <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-green-500 text-xs text-white">
+      {read ? (
+        <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-green-500 pt-0.5 text-xs text-white">
           ✓
+        </span>
+      ) : (
+        <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 pl-0.5 text-xs text-white">
+          x
         </span>
       )}
       {person === "yiyi" ? "依依" : "沁瑜"}
